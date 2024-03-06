@@ -4,7 +4,7 @@
     height: 65px;
     background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
     color: white;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .header--image {
@@ -18,6 +18,6 @@
 }
 
 .header--project {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
 }
