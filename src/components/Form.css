@@ -16,4 +16,6 @@
     border: solid 1px #D1D5DB;
     font-size: 0.875rem;
     margin-top: 5px;
+    font-family: inherit;
+    outline-color: #A626D3;
 }
