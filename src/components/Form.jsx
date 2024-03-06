@@ -4,7 +4,7 @@ const Form = () => {
   return (
     <form name="memeTextForm" className="form" id="memeTextForm">
       <div className="form--input-container">
-        <label for="top-text" className="form--input-label">
+        <label htmlFor="top-text" className="form--input-label">
           Top text
         </label>
         <input
@@ -15,7 +15,7 @@ const Form = () => {
         ></input>
       </div>
       <div className="form--input-container">
-        <label for="bottom-text" className="form--input-label">
+        <label htmlFor="bottom-text" className="form--input-label">
           Bottom text
         </label>
         <input
