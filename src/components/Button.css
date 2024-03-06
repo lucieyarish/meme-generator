@@ -1,0 +1,21 @@
+.btn {
+    width: 100%;
+    margin-top: 1.5em;
+    padding: 1em 0;
+    border-radius: 5px;
+    color: white;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    background: white;
+    color: #672280;
+    outline-color: #A626D3;
+    padding: 0.8em 0;
+    border: 2px solid #A626D3;
+}
