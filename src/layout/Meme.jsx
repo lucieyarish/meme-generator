@@ -7,22 +7,39 @@ import Image from '../components/Image';
 
 const Meme = () => {
   const btnText = 'Get a new meme image';
-  const [memeImg, setMemeImg] = useState('');
+  const [meme, setMeme] = useState({
+    topText: '',
+    bottomText: '',
+    randomImage: 'http://i.imgflip.com/1bij.jpg',
+  });
 
   const getRandomNumber = () => {
     return Math.floor(Math.random() * memesData.data.memes.length);
   };
+
   const getRandomMemeImg = () => {
     const memesArray = memesData.data.memes;
     const randomIndex = getRandomNumber();
-    setMemeImg(memesArray[randomIndex].url);
+    setMeme((prevState) => {
+      return {
+        ...prevState,
+        randomImage: memesArray[randomIndex].url,
+      };
+    });
+  };
+
+  const handleInputChange = (values) => {
+    setMeme({
+      ...meme,
+      ...values,
+    });
   };
 
   return (
     <main className="main-container">
-      <Form />
+      <Form onInputChange={handleInputChange} />
       <Button text={btnText} generateMemeImg={getRandomMemeImg} />
-      <Image imgSrc={memeImg} />
+      <Image imgSrc={meme.randomImage} />
     </main>
   );
 };

@@ -1,6 +1,26 @@
+import { useState } from 'react';
 import './Form.css';
 
-const Form = () => {
+const Form = (props) => {
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
+
+  const handleTopTextChange = (event) => {
+    setTopText(event.target.value);
+    props.onInputChange({
+      topText: event.target.value,
+      bottomText,
+    });
+  };
+
+  const handleBottomTextChange = (event) => {
+    setBottomText(event.target.value);
+    props.onInputChange({
+      topText,
+      bottomText: event.target.value,
+    });
+  };
+
   return (
     <form name="memeTextForm" className="form" id="memeTextForm">
       <div className="form--input-container">
@@ -12,6 +32,8 @@ const Form = () => {
           id="top-text"
           placeholder="Shut up"
           className="form--input"
+          value={topText}
+          onChange={handleTopTextChange}
         ></input>
       </div>
       <div className="form--input-container">
@@ -23,6 +45,8 @@ const Form = () => {
           id="bottom-text"
           placeholder="And take my money"
           className="form--input"
+          value={bottomText}
+          onChange={handleBottomTextChange}
         ></input>
       </div>
     </form>
