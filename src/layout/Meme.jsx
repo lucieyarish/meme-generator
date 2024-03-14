@@ -8,8 +8,8 @@ import Image from '../components/Image';
 const Meme = () => {
   const btnText = 'Get a new meme image';
   const [meme, setMeme] = useState({
-    topText: '',
-    bottomText: '',
+    topText: 'One does not simply',
+    bottomText: 'Walk into Mordor',
     randomImage: 'http://i.imgflip.com/1bij.jpg',
   });
 
@@ -17,7 +17,7 @@ const Meme = () => {
     const { id, value } = event.target;
     setMeme((previousMeme) => ({
       ...previousMeme,
-      [id.includes('top') ? 'topText' : 'bottomtext']: value;
+      [id.includes('top') ? 'topText' : 'bottomText']: value,
     }));
   };
 
@@ -40,7 +40,11 @@ const Meme = () => {
     <main className="main-container">
       <Form handleTextChange={handleTextChange} />
       <Button text={btnText} generateMemeImg={getRandomMemeImg} />
-      <Image imgSrc={meme.randomImage} />
+      <div className="meme">
+        <h2 className="meme--text top">{meme.topText}</h2>
+        <h2 className="meme--text bottom">{meme.bottomText}</h2>
+        <Image imgSrc={meme.randomImage} />
+      </div>
     </main>
   );
 };
