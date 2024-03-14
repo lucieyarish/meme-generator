@@ -13,6 +13,14 @@ const Meme = () => {
     randomImage: 'http://i.imgflip.com/1bij.jpg',
   });
 
+  const handleTextChange = (event) => {
+    const { id, value } = event.target;
+    setMeme((previousMeme) => ({
+      ...previousMeme,
+      [id.includes('top') ? 'topText' : 'bottomtext']: value;
+    }));
+  };
+
   const getRandomNumber = () => {
     return Math.floor(Math.random() * memesData.data.memes.length);
   };
@@ -28,16 +36,9 @@ const Meme = () => {
     });
   };
 
-  const handleInputChange = (values) => {
-    setMeme({
-      ...meme,
-      ...values,
-    });
-  };
-
   return (
     <main className="main-container">
-      <Form onInputChange={handleInputChange} />
+      <Form handleTextChange={handleTextChange} />
       <Button text={btnText} generateMemeImg={getRandomMemeImg} />
       <Image imgSrc={meme.randomImage} />
     </main>
