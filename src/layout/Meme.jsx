@@ -1,17 +1,25 @@
 import './Meme.css';
 import Form from '../components/Form';
 import Button from '../components/Button';
-import { useState } from 'react';
-import memesData from '../data/memesData.js';
+import { useEffect, useState } from 'react';
 import Image from '../components/Image';
 
 const Meme = () => {
   const btnText = 'Get a new meme image';
+
   const [meme, setMeme] = useState({
-    topText: 'One does not simply',
-    bottomText: 'Walk into Mordor',
+    topText: '',
+    bottomText: '',
     randomImage: 'http://i.imgflip.com/1bij.jpg',
   });
+
+  const [allMemes, setAllMemes] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.imgflip.com/get_memes')
+      .then((res) => res.json())
+      .then((data) => setAllMemes(data.data.memes));
+  }, []);
 
   const handleTextChange = (event) => {
     const { id, value } = event.target;
@@ -22,16 +30,16 @@ const Meme = () => {
   };
 
   const getRandomNumber = () => {
-    return Math.floor(Math.random() * memesData.data.memes.length);
+    return Math.floor(Math.random() * allMemes.length);
   };
 
   const getRandomMemeImg = () => {
-    const memesArray = memesData.data.memes;
+    // const memesArray = memesData.data.memes;
     const randomIndex = getRandomNumber();
     setMeme((prevState) => {
       return {
         ...prevState,
-        randomImage: memesArray[randomIndex].url,
+        randomImage: allMemes[randomIndex].url,
       };
     });
   };
